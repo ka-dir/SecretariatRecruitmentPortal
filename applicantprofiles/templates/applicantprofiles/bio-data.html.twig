@@ -1,0 +1,66 @@
+{% extends 'main-layout.html' %}
+{% block content %}
+    <div class="b-example-divider"></div>
+
+    <div class="container my-5">
+        <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
+            <button type="button"
+                    class="position-absolute top-0 end-0 p-3 m-3 btn-close bg-secondary bg-opacity-10 rounded-pill"
+                    aria-label="Close"></button>
+            <svg class="bi mt-5 mb-3" width="48" height="48">
+                <use xlink:href="#check2-circle"/>
+            </svg>
+            <h1 class="text-body-emphasis">Applicant Activity Center</h1>
+            <p class="col-lg-6 mx-auto mb-4">
+
+                The profile pages contain your contact details including name, address, phone number and other relevant
+                information. Changes made to your contact details on these pages will be updated on all of the jobs you
+                have applied to.
+            </p>
+
+
+                <div class="d-inline-flex gap-2 mb-5">
+                <a href="{% url 'applicantprofiles:bio-data-create' %}"
+                   class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg> &nbsp; New Biographical Information
+                    <svg class="bi ms-2" width="24" height="24">
+                        <use xlink:href="#arrow-right-short"/>
+                    </svg>
+                </a>
+
+
+            </div>
+
+
+    {% for bio_data in bio_datas %}
+        <!-- if bio data exist -->
+        {% if bio_data %}
+         <div class="d-inline-flex gap-2 mb-5">
+                <a href="{% url 'applicantprofiles:bio-data-update' bio_data.id %}"
+                   class="d-inline-flex align-items-center btn btn-secondary btn-lg px-4 rounded-pill" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg> &nbsp; Update Biographical Information
+                    <svg class="bi ms-2" width="24" height="24">
+                        <use xlink:href="#arrow-right-short"/>
+                    </svg>
+                </a>
+
+
+            </div>
+        {% endif %}
+
+    {% endfor %}
+        </div>
+    </div>
+
+
+
+
+{% endblock content %}
