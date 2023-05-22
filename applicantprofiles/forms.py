@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import BioData, AcademicQualification, ProfessionalQualification
+from .models import BioData, AcademicQualification, ProfessionalQualification, RelevantCourse
 
 
 class BioDataForm(ModelForm):
@@ -17,4 +17,10 @@ class AcademicRiderForm(ModelForm):
 class ProfessionalRiderForm(ModelForm):
     class Meta:
         model = ProfessionalQualification
+        fields = '__all__'
+
+
+class RelevantCourseForm(ModelForm):
+    class Meta:
+        model = RelevantCourse
         fields = '__all__'

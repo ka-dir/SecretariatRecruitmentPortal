@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <hr>
-    <a href="{% url 'applicantprofiles:professional-rider' %}"
+    <a href="{% url 'applicantprofiles:courses-training' %}"
        class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
         Go Back
         <svg class="bi ms-2" width="24" height="24">
@@ -12,14 +12,14 @@
     <hr>
     <div class="col-md-12">
         <div class="card">
-            <h5 class="card-header">Professional Qualification (Add your Add Professional Qualification )</h5>
+            <h5 class="card-header">Courses/Training Qualification (Add your  Courses/Training Qualification )</h5>
             <div class="card-body">
                 <h5 class="card-title"></h5>
 
                 <form action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
-                <input type="submit" class="btn btn-primary" value="Save Professional Qualification">
+                <input type="submit" class="btn btn-primary" value="Save Courses/Training Qualification">
                      </form>
             </div>
         </div>

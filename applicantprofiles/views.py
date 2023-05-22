@@ -1,8 +1,8 @@
 from django.shortcuts import render, reverse, redirect
 from django.http import HttpResponse
 from django.views import generic
-from .forms import BioDataForm, AcademicRiderForm, ProfessionalRiderForm
-from .models import BioData, AcademicQualification, ProfessionalQualification
+from .forms import BioDataForm, AcademicRiderForm, ProfessionalRiderForm, RelevantCourseForm
+from .models import BioData, AcademicQualification, ProfessionalQualification, RelevantCourse
 
 
 # Create your views here.
@@ -110,6 +110,7 @@ class ProfessionalRiderUpdateView(generic.UpdateView):
     def get_success_url(self):
         return reverse('applicantprofiles:professional-rider')
 
+
 # Professional Rider Delete
 class ProfessionalRiderDeleteView(generic.DeleteView):
     template_name = 'applicantprofiles/professional-rider-delete.html.twig'
@@ -119,3 +120,44 @@ class ProfessionalRiderDeleteView(generic.DeleteView):
 
     def get_success_url(self):
         return reverse('applicantprofiles:professional-rider')
+
+
+# Courses/Training  List
+class CoursesTrainingListView(generic.ListView):
+    template_name = 'applicantprofiles/courses-training.html.twig'
+    context_object_name = 'courses_training_datas'
+
+    def get_queryset(self):
+        return RelevantCourse.objects.all()
+
+
+# Courses/Training   Create
+class CoursesTrainingCreateView(generic.CreateView):
+    template_name = 'applicantprofiles/courses-training-create.html.twig'
+    form_class = RelevantCourseForm
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:courses-training')
+
+
+# Courses/Training  Update
+class CoursesTrainingUpdateView(generic.UpdateView):
+    template_name = 'applicantprofiles/courses-training-update.html.twig'
+    form_class = RelevantCourseForm
+
+    def get_queryset(self):
+        return RelevantCourse.objects.all()
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:courses-training')
+
+
+# Courses/Training  Delete
+class CoursesTrainingDeleteView(generic.DeleteView):
+    template_name = 'applicantprofiles/courses-training-delete.html.twig'
+
+    def get_queryset(self):
+        return RelevantCourse.objects.all()
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:courses-training')

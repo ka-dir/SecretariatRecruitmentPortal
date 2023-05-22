@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import BioDataView, BioDataCreateView, BioDataUpdateView, AcademicRiderListView, AcademicRiderCreateView, \
     AcademicRiderUpdateView, AcademicRiderDeleteView, ProfessionalRiderListView, ProfessionalRiderCreateView, \
-    ProfessionalRiderUpdateView, ProfessionalRiderDeleteView
+    ProfessionalRiderUpdateView, ProfessionalRiderDeleteView, CoursesTrainingListView, CoursesTrainingCreateView, \
+    CoursesTrainingUpdateView, CoursesTrainingDeleteView
 
 app_name = 'applicantprofiles'
 
@@ -24,7 +25,17 @@ urlpatterns = [
     path('professional-rider-create/', ProfessionalRiderCreateView.as_view(), name='professional-rider-create'),
     path('professional-rider-update/<int:pk>/', ProfessionalRiderUpdateView.as_view(),
          name='professional-rider-update'),
-    path('professional-rider-delete/<int:pk>/', ProfessionalRiderDeleteView.as_view(), name='professional-rider-delete'),
+    path('professional-rider-delete/<int:pk>/', ProfessionalRiderDeleteView.as_view(),
+         name='professional-rider-delete'),
     # end professional rider
+
+    # start Courses/Training
+    path('courses-training', CoursesTrainingListView.as_view(), name='courses-training'),
+    path('courses-training-create/', CoursesTrainingCreateView.as_view(), name='courses-training-create'),
+    path('courses-training-update/<int:pk>/', CoursesTrainingUpdateView.as_view(),
+         name='courses-training-update'),
+    path('courses-training-delete/<int:pk>/', CoursesTrainingDeleteView.as_view(),
+         name='courses-training-delete'),
+    # end Courses/Training
 
 ]
