@@ -71,7 +71,7 @@ class AcademicQualification(models.Model):
     other_university_institution = models.CharField('Other university', max_length=64, blank=True, null=True)
     upload_cert = models.ImageField('Upload supporting document(s). For example, degree, diploma or certificate.',
                                     blank=True, null=True)
-    certificate_number = models.ImageField('Certificate number', blank=True, null=True)
+    certificate_number = models.CharField(max_length=24, blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -110,7 +110,7 @@ class ProfessionalQualification(models.Model):
     other_university_institution = models.CharField('Other university', max_length=64, blank=True, null=True)
     upload_cert = models.ImageField('Upload supporting document(s). For example, degree, diploma or certificate.',
                                     blank=True, null=True)
-    certificate_number = models.ImageField('Certificate number', blank=True, null=True)
+    certificate_number = models.CharField(max_length=24, blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
