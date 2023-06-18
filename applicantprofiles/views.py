@@ -1,8 +1,10 @@
 from django.shortcuts import render, reverse, redirect
 from django.http import HttpResponse
 from django.views import generic
-from .forms import BioDataForm, AcademicRiderForm, ProfessionalRiderForm, RelevantCourseForm
-from .models import BioData, AcademicQualification, ProfessionalQualification, RelevantCourse
+from .forms import BioDataForm, AcademicRiderForm, ProfessionalRiderForm, RelevantCourseForm, \
+    MembershipProfessionalBodyForm, ProfessionalExperienceForm, ReferenceForm
+from .models import BioData, AcademicQualification, ProfessionalQualification, RelevantCourse, \
+    MembershipProfessionalBody, MembershipProfessionalBody, ProfessionalExperience, Reference
 
 
 # Create your views here.
@@ -161,3 +163,121 @@ class CoursesTrainingDeleteView(generic.DeleteView):
 
     def get_success_url(self):
         return reverse('applicantprofiles:courses-training')
+
+
+# Membership  List
+class MembershipListView(generic.ListView):
+    template_name = 'applicantprofiles/membership.html.twig'
+    context_object_name = 'membership_datas'
+
+    def get_queryset(self):
+        return MembershipProfessionalBody.objects.all()
+
+
+# Membership  Create
+class MembershipCreateView(generic.CreateView):
+    template_name = 'applicantprofiles/courses-training-create.html.twig'
+    form_class = MembershipProfessionalBodyForm
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:membership')
+
+
+# Membership Update
+class MembershipUpdateView(generic.UpdateView):
+    template_name = 'applicantprofiles/membership-update.html.twig'
+    form_class = MembershipProfessionalBodyForm
+
+    def get_queryset(self):
+        return MembershipProfessionalBody.objects.all()
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:membership')
+
+
+# Membership Delete
+class MembershipDeleteView(generic.DeleteView):
+    template_name = 'applicantprofiles/membership-delete.html.twig'
+
+    def get_queryset(self):
+        return MembershipProfessionalBody.objects.all()
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:membership')
+
+
+class EmploymentHistoryListView(generic.ListView):
+    template_name = 'applicantprofiles/employment-history.html.twig'
+    context_object_name = 'employee_history_datas'
+
+    def get_queryset(self):
+        return ProfessionalExperience.objects.all()
+
+
+class EmploymentHistoryCreateView(generic.CreateView):
+    template_name = 'applicantprofiles/employment-history-create.html.twig'
+    form_class = ProfessionalExperienceForm
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:employment-history')
+
+
+class EmploymentHistoryUpdateView(generic.UpdateView):
+    template_name = 'applicantprofiles/employment-history-update.html.twig'
+    form_class = ProfessionalExperienceForm
+
+    def get_queryset(self):
+        return ProfessionalExperience.objects.all()
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:employment-history')
+
+
+class EmploymentHistoryDeleteView(generic.DeleteView):
+    template_name = 'applicantprofiles/employment-history-delete.html.twig'
+
+    def get_queryset(self):
+        return ProfessionalExperience.objects.all()
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:employment-history')
+
+
+class RefereeListView(generic.ListView):
+    template_name = 'applicantprofiles/referee.html.twig'
+    context_object_name = 'referee_datas'
+
+    def get_queryset(self):
+        return Reference.objects.all()
+
+
+class RefereeCreateView(generic.CreateView):
+    template_name = 'applicantprofiles/referee-create.html.twig'
+    form_class = ReferenceForm
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:referee')
+
+
+class RefereeUpdateView(generic.UpdateView):
+    template_name = 'applicantprofiles/referee-update.html.twig'
+    form_class = ReferenceForm
+
+    def get_queryset(self):
+        return Reference.objects.all()
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:referee')
+
+
+class RefereeDeleteView(generic.DeleteView):
+    template_name = 'applicantprofiles/referee-delete.html.twig'
+
+    def get_queryset(self):
+        return Reference.objects.all()
+
+    def get_success_url(self):
+        return reverse('applicantprofiles:referee')
+
+
+

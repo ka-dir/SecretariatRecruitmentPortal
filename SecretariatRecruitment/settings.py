@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'applicantprofiles.apps.ApplicantprofilesConfig',
     'accounts.apps.AccountsConfig',
     'setups.apps.SetupsConfig',
+    'adverts.apps.AdvertsConfig',
     
 ]
 

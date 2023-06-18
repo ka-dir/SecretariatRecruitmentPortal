@@ -2,7 +2,10 @@ from django.urls import path
 from .views import BioDataView, BioDataCreateView, BioDataUpdateView, AcademicRiderListView, AcademicRiderCreateView, \
     AcademicRiderUpdateView, AcademicRiderDeleteView, ProfessionalRiderListView, ProfessionalRiderCreateView, \
     ProfessionalRiderUpdateView, ProfessionalRiderDeleteView, CoursesTrainingListView, CoursesTrainingCreateView, \
-    CoursesTrainingUpdateView, CoursesTrainingDeleteView
+    CoursesTrainingUpdateView, CoursesTrainingDeleteView, MembershipListView, MembershipCreateView, \
+    MembershipUpdateView, MembershipDeleteView, EmploymentHistoryListView, EmploymentHistoryCreateView, \
+    EmploymentHistoryUpdateView, EmploymentHistoryDeleteView, RefereeListView, RefereeCreateView, RefereeUpdateView, \
+    RefereeDeleteView
 
 app_name = 'applicantprofiles'
 
@@ -37,5 +40,31 @@ urlpatterns = [
     path('courses-training-delete/<int:pk>/', CoursesTrainingDeleteView.as_view(),
          name='courses-training-delete'),
     # end Courses/Training
+
+    # start Membership
+    path('membership', MembershipListView.as_view(), name='membership'),
+    path('membership-create/', MembershipCreateView.as_view(), name='membership-create'),
+    path('membership-update/<int:pk>/', MembershipUpdateView.as_view(),
+         name='membership-update'),
+    path('membership-delete/<int:pk>/', MembershipDeleteView.as_view(),
+         name='membership-delete'),
+    # end Membership
+
+    # start employment
+    path('employment-history', EmploymentHistoryListView.as_view(), name='employment-history'),
+    path('employment-history-create', EmploymentHistoryCreateView.as_view(), name='employment-history-create'),
+    path('employment-history-update/<int:pk>/', EmploymentHistoryUpdateView.as_view(),
+         name='employment-history-update'),
+    path('employment-history-delete/<int:pk>/', EmploymentHistoryDeleteView.as_view(),
+         name='employment-history-delete'),
+    # end employment
+
+    # start referee
+    path('referee', RefereeListView.as_view(), name='referee'),
+    path('referee-create', RefereeCreateView.as_view(), name='referee-create'),
+    path('referee-update/<int:pk>/', RefereeUpdateView.as_view(), name='referee-update'),
+    path('referee-delete/<int:pk>/', RefereeDeleteView.as_view(), name='referee-delete'),
+
+    # end referee
 
 ]
