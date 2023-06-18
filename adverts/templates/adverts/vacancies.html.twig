@@ -1,0 +1,58 @@
+{% extends 'main-layout.html' %}
+{% block content %}
+      <a href="{% url 'dashboards:dashboard' %}"><span class="badge text-bg-info rounded-pill"> Go Back </a>
+    <hr>
+    <br>
+
+    {% if vacancies_datas %}
+        <div class="card text-center">
+            <div class="card-header">
+                Vacancies
+            </div>
+            <div class="card-body">
+
+                <table class="table table-bordered table-success  table-striped table-hover">
+
+                    <thead>
+                    <tr>
+                        <th scope="col">Advert No</th>
+                        <th scope="col">Post</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Closing Date</th>
+                        <th scope="col">Job Description</th>
+                        <th scope="col">Advert Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    {% for vacancy_data in vacancies_datas %}
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <td>{{ vacancy_data.advert_no }}</td>
+                        <td>{{ vacancy_data.post_vacancy }}</td>
+                        <td>{{ vacancy_data.category }}</td>
+                        <td>{{ vacancy_data.closing_date }}</td>
+                        <td><a href="{% url 'adverts:vacancy' vacancy_data.id %}">Read More</a></td>
+                        <td><span class="badge text-bg-warning rounded-pill"> {{ vacancy_data.is_closed }}</span> </td>
+                        <td><button type="button" class="btn btn-warning">Apply</button></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th scope="col">Advert No</th>
+                        <th scope="col">Post</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Closing Date</th>
+                        <th scope="col">Job Description</th>
+                        <th scope="col">Advert Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="card-footer text-body-secondary">
+                Vacancies
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

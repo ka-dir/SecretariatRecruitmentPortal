@@ -9,21 +9,44 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=16, blank=True, null=True)  # 0=EXTERNAL; 1=INTERNAL
 
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
+
 
 class Status(models.Model):
     name = models.CharField(max_length=16, blank=True, null=True)  # 0=OPEN; 1=CLOSED; 2=DRAFT
+
+    class Meta:
+        verbose_name = 'Status'
+        verbose_name_plural = 'Status'
+
+    def __str__(self):
+        return self.name
 
 
 class TargetGroup(models.Model):
     name = models.CharField(max_length=16, blank=True, null=True)  # 0=SECRETARIAT; 1=TEACHERS; 2=BOTH
 
+    def __str__(self):
+        return self.name
+
 
 class TermOfService(models.Model):
     name = models.CharField(max_length=16, blank=True, null=True)  # 0=PERMANENT; 1=INTERN; 2=CONTRACT
 
+    def __str__(self):
+        return self.name
+
 
 class PayType(models.Model):
     name = models.CharField(max_length=16, blank=True, null=True)  # 0=MONTHLY; 1=YEARLY;
+
+    def __str__(self):
+        return self.name
 
 
 class Advert(models.Model):
@@ -51,4 +74,4 @@ class Advert(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.post_vacancy
+        return "{} ({}) ".format(self.advert_no, self.post_vacancy)
